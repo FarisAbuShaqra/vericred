@@ -22,31 +22,6 @@ The core idea: **the institution decides what is genuine, and the blockchain mak
 
 ![Credential registered with QR code](screenshots/qr.png)
 
-## Using the live demo
-
-The app runs at https://vericred-zeta.vercel.app/ against the live contract on Polygon Amoy.
-
-### For the issuing institution
-
-Issuing writes a record to the blockchain, so it requires a wallet and a small amount of test POL for gas. Only the contract owner's wallet (the registered issuer) can issue; a transaction from any other wallet is rejected by the contract. Steps:
-
-1. Install MetaMask and load the issuer wallet (the wallet that owns the contract).
-2. Switch MetaMask to the Polygon Amoy test network.
-3. Make sure the issuer wallet holds a little test POL for gas. Test POL is free from a Polygon Amoy faucet.
-4. Open the live site and select Issue mode.
-5. Connect the issuer wallet when prompted.
-6. Upload the credential PDF and fill in the fields (student name, ID, email, degree, university, graduation date, honors). These fields are printed in the record and stay off-chain. Only the file's hash is written on-chain.
-7. Submit, then confirm the transaction in MetaMask. Wait a few seconds for it to register on-chain.
-8. The success screen shows the certificate ID and a QR code. Save these with the credential. The QR links to the verification page for that credential.
-
-### For anyone verifying (no wallet needed)
-
-Verifying reads from the blockchain, which is free and needs no wallet, no account, and no gas. Steps:
-
-1. Open the live site and select Verify mode.
-2. Upload the credential PDF, or scan the QR code, or enter the certificate ID.
-3. The result shows VERIFIED when the document matches the on-chain record (with the issuer address and timestamp), or NOT VERIFIED when it does not. Uploading the PDF is the full cryptographic check; the QR and certificate ID are a quick lookup that should be completed with a PDF upload.
-
 ## Privacy by design
 
 No personal data is written to the blockchain. A public ledger is the wrong place for names, student IDs, or emails, so those live only in the PDF and in the interface. On-chain, each record holds only the document hash, the certificate ID, the issuer address, and the timestamp. This keeps the system aligned with data-protection norms while still making the credential tamper-evident.
